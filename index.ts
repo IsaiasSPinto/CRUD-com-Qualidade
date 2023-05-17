@@ -5,8 +5,10 @@ const DB_FILE_PATH = "./db";
 
 console.log("[CRUD]");
 
+type UUID = string;
+
 interface Todo {
-  id: string;
+  id: UUID;
   date: string;
   content: string;
   done: boolean;
@@ -47,7 +49,7 @@ function read(): Array<Todo> {
   return db.todos;
 }
 
-function update(id: string, partialTodo: Partial<Todo>) {
+function update(id: UUID, partialTodo: Partial<Todo>) {
   const todos: Todo[] = read();
   let updatedTodo;
   todos.forEach((currentTodo) => {
@@ -75,7 +77,11 @@ function update(id: string, partialTodo: Partial<Todo>) {
   return updatedTodo;
 }
 
-function deleteById(id: string) {
+function updateContentById(id: UUID, content: string) {
+  return update(id, { content });
+}
+
+function deleteById(id: UUID) {
   const todos: Todo[] = read();
   let todosWihoutOne = todos.filter((x) => x.id != id);
 
@@ -89,10 +95,6 @@ function deleteById(id: string) {
       2
     )
   );
-}
-
-function updateContentById(id: string, content: string) {
-  return update(id, { content });
 }
 
 function CLEAR_DB() {
