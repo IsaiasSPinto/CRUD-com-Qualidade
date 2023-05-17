@@ -1,1 +1,14 @@
-Hoje eu precisso gravar aulas!
+{
+  "todos": [
+    {
+      "date": "2023-05-17T13:10:22.321Z",
+      "content": "Primeira TODO",
+      "done": false
+    },
+    {
+      "date": "2023-05-17T13:10:22.322Z",
+      "content": "Segunda TODO",
+      "done": false
+    }
+  ]
+}
