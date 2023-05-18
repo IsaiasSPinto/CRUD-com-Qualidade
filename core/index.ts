@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from "fs";
 import { v4 as uuid } from "uuid";
 
@@ -83,7 +84,7 @@ function updateContentById(id: UUID, content: string) {
 
 function deleteById(id: UUID) {
   const todos: Todo[] = read();
-  let todosWihoutOne = todos.filter((x) => x.id != id);
+  const todosWihoutOne = todos.filter((x) => x.id != id);
 
   fs.writeFileSync(
     DB_FILE_PATH,
