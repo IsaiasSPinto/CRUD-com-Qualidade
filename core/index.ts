@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 
 const DB_FILE_PATH = "./db";
 
-console.log("[CRUD]");
+//console.log("[CRUD]");
 
 type UUID = string;
 
@@ -39,7 +39,7 @@ function create(content: string): Todo {
   return todo;
 }
 
-function read(): Array<Todo> {
+export function read(): Array<Todo> {
   const dbString = fs.readFileSync(DB_FILE_PATH, "utf-8");
   const db = JSON.parse(dbString || "{}");
 
@@ -103,11 +103,11 @@ function CLEAR_DB() {
 }
 
 //[Simulation]
-CLEAR_DB();
-const primeiraTodo = create("Primeira TODO");
-const segundaTodo = create("Segunda TODO");
-create("Terceira TODO");
-updateContentById(segundaTodo.id, "Segunda todo com novo Content");
-deleteById(primeiraTodo.id);
+// CLEAR_DB();
+// const primeiraTodo = create("Primeira TODO");
+// const segundaTodo = create("Segunda TODO");
+// create("Terceira TODO");
+// updateContentById(segundaTodo.id, "Segunda todo com novo Content");
+// deleteById(primeiraTodo.id);
 
-console.log(read());
+// console.log(read());
