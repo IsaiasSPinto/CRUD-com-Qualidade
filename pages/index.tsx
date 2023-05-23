@@ -8,10 +8,11 @@ interface HomeTodo {
 }
 export default function HomePage() {
   const [todos, setTodos] = useState<HomeTodo[]>([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    todoController.get().then((todos) => setTodos(todos));
-  }, []);
+    todoController.get({ page }).then(({ todos }) => setTodos(todos));
+  }, [page]);
 
   return (
     <main>
@@ -76,8 +77,8 @@ export default function HomePage() {
 
             <tr>
               <td colSpan={4} align="center" style={{ textAlign: "center" }}>
-                <button data-type="load-more">
-                  Carregar mais{" "}
+                <button data-type="load-more" onClick={() => setPage(page + 1)}>
+                  Pagina {page}, Carregar mais{" "}
                   <span
                     style={{
                       display: "inline-block",
